@@ -39,8 +39,6 @@ class Countries extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final countries = ref.watch(countriesNotifierProvider);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Countries'),
@@ -51,18 +49,23 @@ class Countries extends ConsumerWidget {
           )
         ],
       ),
-      body: switch (countries) {
-        AsyncData(:final value) => ListView.builder(
-            itemCount: value.length,
-            itemBuilder: ((context, index) {
-              final country = value[index];
-              return ListTile(
-                title: Text(country['name']),
-              );
-            }),
-          ),
-        _ => const Center(child: CircularProgressIndicator())
-      },
+      body: Consumer(
+        builder: (_, ref, __) {
+          final countries = ref.watch(countriesNotifierProvider);
+          return switch (countries) {
+            AsyncData(:final value) => ListView.builder(
+                itemCount: value.length,
+                itemBuilder: (_, index) {
+                  final country = value[index];
+                  return ListTile(
+                    title: Text(country['name']),
+                  );
+                },
+              ),
+            _ => const Center(child: CircularProgressIndicator())
+          };
+        },
+      ),
     );
   }
 }
@@ -70,7 +73,6 @@ class Countries extends ConsumerWidget {
 @riverpod
 class CountriesNotifier extends _$CountriesNotifier {
   @override
-  Future<List<PostgrestMap>> build() async {
-    return Supabase.instance.client.from('countries').select();
-  }
+  Future<List<PostgrestMap>> build() =>
+      Supabase.instance.client.from('countries').select();
 }

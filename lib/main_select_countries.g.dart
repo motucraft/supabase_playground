@@ -6,7 +6,7 @@ part of 'main_select_countries.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$countriesNotifierHash() => r'd5a441da34c6fd0fa54ebf4bfefc3ee6763b7ccb';
+String _$countriesNotifierHash() => r'd67714fc5a00950874ead75561f00f93e9655835';
 
 /// See also [CountriesNotifier].
 @ProviderFor(CountriesNotifier)

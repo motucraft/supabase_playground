@@ -1,0 +1,16 @@
+query Countries($first: Int) {
+  countriesCollection(first: $first) {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+  }
+}

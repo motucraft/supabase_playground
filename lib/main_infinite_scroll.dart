@@ -7,7 +7,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:supabase_playground/graphql/__generated__/schema.schema.gql.dart';
 import 'package:supabase_playground/graphql/query/__generated__/countries.data.gql.dart';
 import 'package:supabase_playground/graphql/query/__generated__/countries.req.gql.dart';
-import 'package:supabase_playground/hooks/paging_controller.dart';
+import 'package:supabase_playground/hooks/use_paging_controller.dart';
 import 'package:supabase_playground/provider/client_provider.dart';
 
 void main() async {

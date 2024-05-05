@@ -5,6 +5,7 @@ query Countries($first: Int, $after: Cursor) {
         id
         name
       }
+      cursor
     }
     pageInfo {
       endCursor

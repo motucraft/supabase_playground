@@ -165,6 +165,9 @@ class _$GCountriesData_countriesCollection_edgesSerializer
       serializers.serialize(object.node,
           specifiedType:
               const FullType(GCountriesData_countriesCollection_edges_node)),
+      'cursor',
+      serializers.serialize(object.cursor,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -191,6 +194,10 @@ class _$GCountriesData_countriesCollection_edgesSerializer
                   specifiedType: const FullType(
                       GCountriesData_countriesCollection_edges_node))!
               as GCountriesData_countriesCollection_edges_node);
+          break;
+        case 'cursor':
+          result.cursor = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -609,6 +616,8 @@ class _$GCountriesData_countriesCollection_edges
   final String G__typename;
   @override
   final GCountriesData_countriesCollection_edges_node node;
+  @override
+  final String cursor;
 
   factory _$GCountriesData_countriesCollection_edges(
           [void Function(GCountriesData_countriesCollection_edgesBuilder)?
@@ -617,12 +626,14 @@ class _$GCountriesData_countriesCollection_edges
           ._build();
 
   _$GCountriesData_countriesCollection_edges._(
-      {required this.G__typename, required this.node})
+      {required this.G__typename, required this.node, required this.cursor})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GCountriesData_countriesCollection_edges', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
         node, r'GCountriesData_countriesCollection_edges', 'node');
+    BuiltValueNullFieldError.checkNotNull(
+        cursor, r'GCountriesData_countriesCollection_edges', 'cursor');
   }
 
   @override
@@ -640,7 +651,8 @@ class _$GCountriesData_countriesCollection_edges
     if (identical(other, this)) return true;
     return other is GCountriesData_countriesCollection_edges &&
         G__typename == other.G__typename &&
-        node == other.node;
+        node == other.node &&
+        cursor == other.cursor;
   }
 
   @override
@@ -648,6 +660,7 @@ class _$GCountriesData_countriesCollection_edges
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, node.hashCode);
+    _$hash = $jc(_$hash, cursor.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -657,7 +670,8 @@ class _$GCountriesData_countriesCollection_edges
     return (newBuiltValueToStringHelper(
             r'GCountriesData_countriesCollection_edges')
           ..add('G__typename', G__typename)
-          ..add('node', node))
+          ..add('node', node)
+          ..add('cursor', cursor))
         .toString();
   }
 }
@@ -679,6 +693,10 @@ class GCountriesData_countriesCollection_edgesBuilder
   set node(GCountriesData_countriesCollection_edges_nodeBuilder? node) =>
       _$this._node = node;
 
+  String? _cursor;
+  String? get cursor => _$this._cursor;
+  set cursor(String? cursor) => _$this._cursor = cursor;
+
   GCountriesData_countriesCollection_edgesBuilder() {
     GCountriesData_countriesCollection_edges._initializeBuilder(this);
   }
@@ -688,6 +706,7 @@ class GCountriesData_countriesCollection_edgesBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _node = $v.node.toBuilder();
+      _cursor = $v.cursor;
       _$v = null;
     }
     return this;
@@ -715,7 +734,9 @@ class GCountriesData_countriesCollection_edgesBuilder
           new _$GCountriesData_countriesCollection_edges._(
               G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
                   r'GCountriesData_countriesCollection_edges', 'G__typename'),
-              node: node.build());
+              node: node.build(),
+              cursor: BuiltValueNullFieldError.checkNotNull(cursor,
+                  r'GCountriesData_countriesCollection_edges', 'cursor'));
     } catch (_) {
       late String _$failedField;
       try {

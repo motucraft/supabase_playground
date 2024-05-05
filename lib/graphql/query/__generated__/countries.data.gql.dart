@@ -88,6 +88,7 @@ abstract class GCountriesData_countriesCollection_edges
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   GCountriesData_countriesCollection_edges_node get node;
+  String get cursor;
   static Serializer<GCountriesData_countriesCollection_edges> get serializer =>
       _$gCountriesDataCountriesCollectionEdgesSerializer;
 

@@ -71,7 +71,14 @@ const Countries = _i1.OperationDefinitionNode(
                   selectionSet: null,
                 ),
               ]),
-            )
+            ),
+            _i1.FieldNode(
+              name: _i1.NameNode(value: 'cursor'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
           ]),
         ),
         _i1.FieldNode(

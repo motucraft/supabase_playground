@@ -80,7 +80,9 @@ class Countries extends HookConsumerWidget {
         final edges = response.data?.countriesCollection?.edges.toList();
         final endCursor =
             response.data?.countriesCollection?.pageInfo.endCursor;
-        if (endCursor == null) {
+        final hasNextPage =
+            response.data?.countriesCollection?.pageInfo.hasNextPage;
+        if (endCursor == null || hasNextPage == false) {
           // 最終ページ
           if (edges?.isNotEmpty == true) {
             pagingController.appendLastPage(edges!);

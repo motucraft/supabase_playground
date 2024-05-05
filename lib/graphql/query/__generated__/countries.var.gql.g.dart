@@ -27,6 +27,13 @@ class _$GCountriesVarsSerializer
         ..add('first')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
+    value = object.after;
+    if (value != null) {
+      result
+        ..add('after')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(_i1.GCursor)));
+    }
     return result;
   }
 
@@ -46,6 +53,10 @@ class _$GCountriesVarsSerializer
           result.first = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
+        case 'after':
+          result.after.replace(serializers.deserialize(value,
+              specifiedType: const FullType(_i1.GCursor))! as _i1.GCursor);
+          break;
       }
     }
 
@@ -56,11 +67,13 @@ class _$GCountriesVarsSerializer
 class _$GCountriesVars extends GCountriesVars {
   @override
   final int? first;
+  @override
+  final _i1.GCursor? after;
 
   factory _$GCountriesVars([void Function(GCountriesVarsBuilder)? updates]) =>
       (new GCountriesVarsBuilder()..update(updates))._build();
 
-  _$GCountriesVars._({this.first}) : super._();
+  _$GCountriesVars._({this.first, this.after}) : super._();
 
   @override
   GCountriesVars rebuild(void Function(GCountriesVarsBuilder) updates) =>
@@ -73,20 +86,25 @@ class _$GCountriesVars extends GCountriesVars {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GCountriesVars && first == other.first;
+    return other is GCountriesVars &&
+        first == other.first &&
+        after == other.after;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, first.hashCode);
+    _$hash = $jc(_$hash, after.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GCountriesVars')..add('first', first))
+    return (newBuiltValueToStringHelper(r'GCountriesVars')
+          ..add('first', first)
+          ..add('after', after))
         .toString();
   }
 }
@@ -99,12 +117,17 @@ class GCountriesVarsBuilder
   int? get first => _$this._first;
   set first(int? first) => _$this._first = first;
 
+  _i1.GCursorBuilder? _after;
+  _i1.GCursorBuilder get after => _$this._after ??= new _i1.GCursorBuilder();
+  set after(_i1.GCursorBuilder? after) => _$this._after = after;
+
   GCountriesVarsBuilder();
 
   GCountriesVarsBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _first = $v.first;
+      _after = $v.after?.toBuilder();
       _$v = null;
     }
     return this;
@@ -125,7 +148,21 @@ class GCountriesVarsBuilder
   GCountriesVars build() => _build();
 
   _$GCountriesVars _build() {
-    final _$result = _$v ?? new _$GCountriesVars._(first: first);
+    _$GCountriesVars _$result;
+    try {
+      _$result =
+          _$v ?? new _$GCountriesVars._(first: first, after: _after?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'after';
+        _after?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GCountriesVars', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

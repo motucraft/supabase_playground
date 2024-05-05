@@ -1,5 +1,5 @@
-query Countries($first: Int) {
-  countriesCollection(first: $first) {
+query Countries($first: Int, $after: Cursor) {
+  countriesCollection(first: $first, after: $after) {
     edges {
       node {
         id

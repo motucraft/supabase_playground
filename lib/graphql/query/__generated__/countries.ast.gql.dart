@@ -16,7 +16,16 @@ const Countries = _i1.OperationDefinitionNode(
       ),
       defaultValue: _i1.DefaultValueNode(value: null),
       directives: [],
-    )
+    ),
+    _i1.VariableDefinitionNode(
+      variable: _i1.VariableNode(name: _i1.NameNode(value: 'after')),
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Cursor'),
+        isNonNull: false,
+      ),
+      defaultValue: _i1.DefaultValueNode(value: null),
+      directives: [],
+    ),
   ],
   directives: [],
   selectionSet: _i1.SelectionSetNode(selections: [
@@ -27,7 +36,11 @@ const Countries = _i1.OperationDefinitionNode(
         _i1.ArgumentNode(
           name: _i1.NameNode(value: 'first'),
           value: _i1.VariableNode(name: _i1.NameNode(value: 'first')),
-        )
+        ),
+        _i1.ArgumentNode(
+          name: _i1.NameNode(value: 'after'),
+          value: _i1.VariableNode(name: _i1.NameNode(value: 'after')),
+        ),
       ],
       directives: [],
       selectionSet: _i1.SelectionSetNode(selections: [
